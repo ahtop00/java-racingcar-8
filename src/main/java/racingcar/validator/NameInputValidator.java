@@ -5,7 +5,7 @@ public class NameInputValidator {
     }
 
     public static void validateNames(String validInput) {
-        String[] names = validInput.split(",");
+        String[] names = validInput.split(",", -1);
         for (String name : names) {
             validateSingleName(name);
         }
