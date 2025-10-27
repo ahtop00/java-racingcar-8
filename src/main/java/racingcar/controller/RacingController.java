@@ -20,6 +20,15 @@ public class RacingController {
     }
 
     public void run() {
+        try {
+            proceedRace();
+        } catch (IllegalArgumentException e) {
+            outputView.printError(e.getMessage());
+            throw e;
+        }
+    }
+
+    private void proceedRace() {
         String namesInput = inputView.readNames();
         NameInputValidator.validateNames(namesInput);
 

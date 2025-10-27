@@ -8,6 +8,7 @@ public class OutputView {
     private static final String MSG_WINNER = "최종 우승자 : ";
     private static final String WINNER_DELIMITER = ", ";
     private static final String POSITION_MARK = "-";
+    private static final String ERROR_HEADER = "[ERROR] ";
 
     public void printRoundResultHeader() {
         System.out.println(MSG_RESULT_HEADER);
@@ -29,5 +30,9 @@ public class OutputView {
     public void printWinner(List<String> winners) {
         String winnersNames = String.join(WINNER_DELIMITER, winners);
         System.out.print(MSG_WINNER + winnersNames);
+    }
+
+    public void printError(String message) {
+        System.out.println(ERROR_HEADER + message);
     }
 }
