@@ -37,17 +37,9 @@ public class RacingTest {
     @DisplayName("playRound 1회 실행 시 자동차들이 정상 이동 및 정지한다.")
     void playRound_1회_실행시_자동차들_정상_이동() {
         //given
-
-        //테스트용 임의의 값 숫자 생성기 (4, 3, 5를 순서대로 반환)
-        NumberGeneratorUtil testGenerator = new NumberGeneratorUtil() {
-            private int index = 0;
-            private final int[] numbers = {4, 3, 5}; //pobi:전진, woni:멈춤, mori:전진
-
-            @Override
-            public int pickNumber() {
-                return numbers[index++];
-            }
-        };
+        final int[] index = {0};
+        final int[] numbers = {4, 3, 5}; //pobi:전진, woni:멈춤, mori:전진
+        NumberGeneratorUtil testGenerator = () -> numbers[index[0]++];
 
         //when
         racing.playRound(testGenerator);
@@ -64,21 +56,15 @@ public class RacingTest {
     void findWinners_단독_우승자_테스트() {
         //given
         //(pobi: 4, 4 = 2 / woni: 3, 3 = 0 / mori: 4, 3 = 1)
-        NumberGeneratorUtil testGenerator = new NumberGeneratorUtil() {
-            private int index = 0;
-            private final int[] numbers = {4, 3, 4, 4, 3, 3};
-
-            @Override
-            public int pickNumber() {
-                return numbers[index++];
-            }
-        };
+        final int[] index = {0};
+        final int[] numbers = {4, 3, 4, 4, 3, 3};
+        NumberGeneratorUtil testGenerator = () -> numbers[index[0]++];
 
         //when
         racing.playRound(testGenerator);
         racing.playRound(testGenerator);
 
-        List<String> winners = racing.findWinner();
+        List<String> winners = racing.findWinners();
 
         //then
         assertThat(winners).containsExactly("pobi");
@@ -89,20 +75,14 @@ public class RacingTest {
     void findWinners_공동_우승자_테스트() {
         //given
         //(pobi: 4, 3 = 1 / woni: 3, 4 = 1 / mori: 3, 3 = 0)
-        NumberGeneratorUtil testGenerator = new NumberGeneratorUtil() {
-            private int index = 0;
-            private final int[] numbers = {4, 3, 3, 3, 4, 3};
-
-            @Override
-            public int pickNumber() {
-                return numbers[index++];
-            }
-        };
+        final int[] index = {0};
+        final int[] numbers = {4, 3, 3, 3, 4, 3};
+        NumberGeneratorUtil testGenerator = () -> numbers[index[0]++];
 
         //when
         racing.playRound(testGenerator);
         racing.playRound(testGenerator);
-        List<String> winners = racing.findWinner();
+        List<String> winners = racing.findWinners();
 
         //then
         assertThat(winners).containsExactly("pobi", "woni");
