@@ -18,7 +18,6 @@ public class Cars {
                 .map(String::trim)
                 .map(Car::new)
                 .toList();
-
         return new Cars(cars);
     }
 
@@ -29,20 +28,26 @@ public class Cars {
     }
 
     public List<String> findWinners() {
-        int maxPosition = findMaxPosition();
+        Position maxPosition = findMaxPosition();
         return findWinnerAt(maxPosition);
     }
 
-    private int findMaxPosition() {
+    private Position findMaxPosition() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
+                .map(Car::getPosition)
+                .reduce(new Position(), this::findFurthestPosition);
     }
 
-    private List<String> findWinnerAt(int maxPosition) {
+    private Position findFurthestPosition(Position position1, Position position2) {
+        if (position1.isFurtherThan(position2)) {
+            return position1;
+        }
+        return position2;
+    }
+
+    private List<String> findWinnerAt(Position maxPosition) {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.getPosition().equals(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
