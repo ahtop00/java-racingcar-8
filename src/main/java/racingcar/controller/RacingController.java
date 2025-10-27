@@ -3,21 +3,20 @@ package racingcar.controller;
 import java.util.List;
 import racingcar.domain.Racing;
 import racingcar.util.NumberGeneratorUtil;
-import racingcar.util.RandomNumberGeneratorUtil;
 import racingcar.validator.NameInputValidator;
 import racingcar.validator.NumberInputValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class RacingController {
-    private final InputView inputView;
-    private final OutputView outputView;
-    private final NumberGeneratorUtil numberGenerator;
+    InputView inputView;
+    OutputView outputView;
+    NumberGeneratorUtil numberGenerator;
 
-    public RacingController() {
-        this.inputView = new InputView();
-        this.outputView = new OutputView();
-        this.numberGenerator = new RandomNumberGeneratorUtil();
+    public RacingController(InputView inputView, OutputView outputView, NumberGeneratorUtil numberGenerator) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.numberGenerator = numberGenerator;
     }
 
     public void run() {
