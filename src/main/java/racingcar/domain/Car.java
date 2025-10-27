@@ -4,24 +4,24 @@ public class Car {
     private static final int MOVE_FORWARD_THRESHOLD = 4;
 
     private final String name;
-    private int position;
+    private final Position position;
 
     public Car(String name) {
         this.name = name;
-        this.position = 0;
+        this.position = new Position();
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
-        return this.position;
+    public Position getPosition() {
+        return position;
     }
 
     public void move(int number) {
         if (number >= MOVE_FORWARD_THRESHOLD) {
-            this.position++;
+            position.move();
         }
     }
 }
