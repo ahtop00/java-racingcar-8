@@ -14,13 +14,13 @@ public class NumberInputValidator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잘못된 숫자입니다.");
         }
     }
 
     private static void validatePositive(int number) {
         if (number <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자는 양수만 가능합니다.");
         }
     }
 }
