@@ -38,8 +38,8 @@ public class CarsTest {
         List<Car> carList = cars.getCarList();
 
         //then
-        assertThat(carList.get(0).getPosition()).isEqualTo(1);
-        assertThat(carList.get(1).getPosition()).isEqualTo(0);
+        assertThat(carList.get(0).getPosition().getValue()).isEqualTo(1);
+        assertThat(carList.get(1).getPosition().getValue()).isEqualTo(0);
     }
 
     @Test

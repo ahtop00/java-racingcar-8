@@ -22,7 +22,7 @@ public class OutputView {
 
     private String formatCarPosition(Car car) {
         String name = car.getName();
-        String position = POSITION_MARK.repeat(car.getPosition());
+        String position = POSITION_MARK.repeat(car.getPosition().getValue());
         return name + " : " + position;
     }
 

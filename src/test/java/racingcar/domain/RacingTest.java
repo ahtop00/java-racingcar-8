@@ -46,9 +46,9 @@ public class RacingTest {
         List<Car> cars = racing.getCars();
 
         //then
-        assertThat(cars.get(0).getPosition()).isEqualTo(1);
-        assertThat(cars.get(1).getPosition()).isEqualTo(0);
-        assertThat(cars.get(2).getPosition()).isEqualTo(1);
+        assertThat(cars.get(0).getPosition().getValue()).isEqualTo(1);
+        assertThat(cars.get(1).getPosition().getValue()).isEqualTo(0);
+        assertThat(cars.get(2).getPosition().getValue()).isEqualTo(1);
     }
 
     @Test

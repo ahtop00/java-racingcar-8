@@ -17,7 +17,7 @@ public class CarTest {
         Car car = new Car(name);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition().getValue()).isEqualTo(0);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class CarTest {
         car.move(4);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(1);
+        assertThat(car.getPosition().getValue()).isEqualTo(1);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class CarTest {
         car.move(3);
 
         //then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getPosition().getValue()).isEqualTo(0);
     }
 
     @Test
@@ -58,6 +58,6 @@ public class CarTest {
         car.move(9); // 위치 2
 
         // then
-        assertThat(car.getPosition()).isEqualTo(2);
+        assertThat(car.getPosition().getValue()).isEqualTo(2);
     }
 }
